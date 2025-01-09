@@ -112,10 +112,10 @@ st.write("Fill out the details below to create your professional visiting card!"
 
 # Input form
 with st.form("visiting_card_form"):
-    firstname = st.text_input("Full Name", value="Harshil Sarariya")
-    role = st.text_input("Role", value="BUSINESS DEVELOPMENT MANAGER")
-    email = st.text_input("Email", value="harshilsarariya@egniol.in")
-    contact_number = st.text_input("Contact Number", value="+91 9510142642")
+    firstname = st.text_input("Full Name", value="")
+    role = st.text_input("Role", value="")
+    email = st.text_input("Email", value="")
+    contact_number = st.text_input("Contact Number", value="")
     submitted = st.form_submit_button("Generate Visiting Card")
 
 if submitted:
