@@ -47,16 +47,7 @@ address_line3 = "Panchamrut Bunglows II, Sola, Ahmedabad, Gujarat 380060."
 
 
 # Function to create the visiting card
-def create_visiting_card(
-    firstname,
-    role,
-    email,
-    contact_number,
-    address_line1,
-    address_line2,
-    address_line3,
-    output_pdf_path,
-):
+def create_visiting_card(firstname, role, email, contact_number, output_pdf_path):
     input_pdf_path = "Visiting_Card_New.pdf"  # Ensure this file exists
     pdfmetrics.registerFont(TTFont("Gilroy-Regular", "./gilroy/Gilroy-Regular.ttf"))
     pdfmetrics.registerFont(TTFont("Gilroy-Heavy", "./gilroy/Gilroy-Heavy.ttf"))
@@ -125,33 +116,18 @@ def index():
         role = request.form.get("role")
         email = request.form.get("email")
         contact_number = request.form.get("contact_number")
-        address1 = request.form.get("address1")
-        address2 = request.form.get("address2")
-        address3 = request.form.get("address3")
 
         user_data = {
             "Full Name": firstname,
             "Role": role,
             "Email": email,
             "Contact Number": contact_number,
-            "Address Line 1": address1,
-            "Address Line 2": address2,
-            "Address Line 3": address3,
         }
 
         log_submission(user_data)
 
         output_pdf_path = f"{firstname.replace(' ', '_')}_visiting_card.pdf"
-        create_visiting_card(
-            firstname,
-            role,
-            email,
-            address1,
-            address2,
-            address3,
-            contact_number,
-            output_pdf_path,
-        )
+        create_visiting_card(firstname, role, email, contact_number, output_pdf_path)
 
         try:
             # Send file to user
@@ -316,9 +292,7 @@ def template():
                     <label for="contact_number">Contact Number</label>
                     <input type="text" id="contact_number" name="contact_number" placeholder="Enter your contact number" required>
                 </div>
-                <div class="form-group"><label>Address Line 1</label><input type="text" name="address1" required></div>
-                <div class="form-group"><label>Address Line 2</label><input type="text" name="address2" required></div>
-                <div class="form-group"><label>Address Line 3</label><input type="text" name="address3" required></div>
+                
                 <button type="submit">Generate Visiting Card</button>
             </form>
             <footer>
@@ -332,4 +306,4 @@ def template():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5010)
+    app.run(debug=True, host="0.0.0.0", port=5001)
