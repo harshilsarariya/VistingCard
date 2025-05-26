@@ -146,10 +146,10 @@ def index():
             firstname,
             role,
             email,
+            contact_number,
             address1,
             address2,
             address3,
-            contact_number,
             output_pdf_path,
         )
 
